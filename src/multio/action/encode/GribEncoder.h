@@ -38,6 +38,7 @@ public:
     void setValue(const std::string& key, eckit::Optional<T> v) {
         if (v) {
             encoder_->setValue(key, *v);
+            std::cout << "GREP ENCODE MD:: " << key << " : " << *v << std::endl;
         }
     };
     template <typename T>

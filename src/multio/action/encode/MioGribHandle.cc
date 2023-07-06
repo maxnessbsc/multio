@@ -45,17 +45,20 @@ MioGribHandle* MioGribHandle::duplicate() const {
 void MioGribHandle::setValue(const std::string& key, long value) {
     LOG_DEBUG_LIB(LibMultio) << "*** Setting value " << value << " for key " << key << std::endl;
     codesCheckRelaxed(codes_set_long(raw(), key.c_str(), value), key, value);
+    std::cout << "GREP ENCODE MIOGRIBHANDLE :: " << key << " :long: " << value << std::endl;
 };
 
 void MioGribHandle::setValue(const std::string& key, double value) {
     LOG_DEBUG_LIB(LibMultio) << "*** Setting value " << value << " for key " << key << std::endl;
     codesCheckRelaxed(codes_set_double(raw(), key.c_str(), value), key, value);
+    std::cout << "GREP ENCODE MIOGRIBHANDLE :: " << key << " :double: " << value << std::endl;
 };
 
 void MioGribHandle::setValue(const std::string& key, const std::string& value) {
     LOG_DEBUG_LIB(LibMultio) << "*** Setting value " << value << " for key " << key << std::endl;
     size_t sz = value.size();
     codesCheckRelaxed(codes_set_string(raw(), key.c_str(), value.c_str(), &sz), key, value);
+    std::cout << "GREP ENCODE MIOGRIBHANDLE :: " << key << " :string: " << value << std::endl;
 };
 
 void MioGribHandle::setValue(const std::string& key, const unsigned char* value) {
@@ -66,12 +69,14 @@ void MioGribHandle::setValue(const std::string& key, const unsigned char* value)
     LOG_DEBUG_LIB(LibMultio) << "*** Setting value " << oss.str() << " for key " << key << std::endl;
     size_t sz = DIGEST_LENGTH;
     codesCheckRelaxed(codes_set_bytes(raw(), key.c_str(), value, &sz), key, value);
+    std::cout << "GREP ENCODE MIOGRIBHANDLE :: " << key << " :char: " << value << std::endl;
 };
 
 void MioGribHandle::setValue(const std::string& key, bool value) {
     long longValue = value;
     LOG_DEBUG_LIB(LibMultio) << "*** Setting value " << value << "(" << longValue << ") for key " << key << std::endl;
     codesCheckRelaxed(codes_set_long(raw(), key.c_str(), longValue), key, value);
+    std::cout << "GREP ENCODE MIOGRIBHANDLE :: " << key << " :bool: " << value << std::endl;
 }
 
 // Set values
